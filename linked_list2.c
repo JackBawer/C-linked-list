@@ -132,7 +132,6 @@ Node *delete_from_list(Node *list, int n) {
 
 Node *free_list(Node* list) {
     if (list == NULL) {
-        free(list);
         printf("List already free\n");
         return NULL;
     }
@@ -140,6 +139,7 @@ Node *free_list(Node* list) {
     for (cur = list, prev = NULL; cur != NULL; prev = cur, cur = cur->next) {
         free(prev);
     }
+    free(cur);
     printf("The list was freed\n");
     return NULL;
 }
