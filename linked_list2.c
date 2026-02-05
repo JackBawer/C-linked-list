@@ -138,7 +138,7 @@ Node *free_list(Node* list) {
     for (cur = list, prev = NULL; cur != NULL; prev = cur, cur = cur->next) {
         free(prev);
     }
-    free(cur);
+    free(prev);
     printf("The list was freed\n");
     return NULL;
 }
