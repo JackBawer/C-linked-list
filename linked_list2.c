@@ -15,6 +15,7 @@ void search_nodes(Node *list);
 Node *search_list(Node *list, int n);
 Node *delete_nodes(Node *list);
 Node *delete_from_list(Node *list, int n);
+Node *free_list(Node* list);
 void print_list(Node* list);
 
 int main(void) {
@@ -32,6 +33,12 @@ int main(void) {
     head = delete_nodes(head);
 
     // Display list to verify
+    print_list(head);
+
+    // Free entire list
+    head = free_list(head);
+    
+    // Display (now empty) list to verify
     print_list(head);
 
     return 0;
@@ -121,6 +128,20 @@ Node *delete_from_list(Node *list, int n) {
     free(cur);
 
     return list;
+}
+
+Node *free_list(Node* list) {
+    if (list == NULL) {
+        free(list);
+        printf("List already free\n");
+        return NULL;
+    }
+    Node *cur, *prev;
+    for (cur = list, prev = NULL; cur != NULL; prev = cur, cur = cur->next) {
+        free(prev);
+    }
+    printf("The list was freed\n");
+    return NULL;
 }
 
 void print_list(Node* list) {
