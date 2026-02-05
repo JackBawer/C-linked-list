@@ -1,6 +1,5 @@
-#include <stdbool.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct Node Node;
 
